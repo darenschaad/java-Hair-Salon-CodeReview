@@ -19,6 +19,15 @@ public class StylistTest {
     assertTrue(Stylist.all().get(0).equals(testStylist));
   }
 
+  @Test
+  public void updateFirstName_updatesTheFirstNameOfAStylist_true() {
+    Stylist testStylist = new Stylist("Daren", "Schaad");
+    testStylist.save();
+    testStylist.updateFirstName("Karen");
+    Stylist savedStylist = Stylist.all().get(0);
+    assertEquals(savedStylist.getFirstName(), "Karen");
+  }
+
 
 
 }

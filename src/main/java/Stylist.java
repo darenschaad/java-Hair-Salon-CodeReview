@@ -60,6 +60,17 @@ public class Stylist {
     }
   }
 
+  public void updateFirstName(String newFirstName) {
+    this.first_name = newFirstName;
+    String sql = "UPDATE stylists SET first_name = :first_name WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("first_name", first_name)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+  }
+
 
 
 
