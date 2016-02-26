@@ -88,6 +88,7 @@ public class Stylist {
         .executeAndFetchFirst(Stylist.class);
     }
   }
+
   public void delete() {
     String sql = "DELETE FROM stylists WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
@@ -95,6 +96,21 @@ public class Stylist {
         .addParameter("id", id)
         .executeUpdate();
     }
+  }
+
+  public void setSpecialtyId(int specialtyId) {
+    specialty_id = specialtyId;
+    String sql = "UPDATE stylists SET specialty_id = :specialty_id WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("specialty_id", specialty_id)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+  }
+
+  public int getSpecialtyId() {
+    return specialty_id;
   }
 
 

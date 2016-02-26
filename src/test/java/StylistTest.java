@@ -58,6 +58,15 @@ public class StylistTest {
     assertTrue(Stylist.all().contains(testStylist2));
   }
 
+  @Test
+  public void setters_setAndGetOptionalAttributes_true() {
+    Stylist testStylist = new Stylist("Daren", "Schaad");
+    testStylist.save();
+    testStylist.setSpecialtyId(1);
+    assertTrue(Stylist.all().get(0).equals(testStylist));
+    assertEquals(testStylist.getSpecialtyId(), 1);
+  }
+
 
 
 
