@@ -71,16 +71,17 @@ public class Client {
         .executeUpdate();
     }
   }
-  // public void updateLastName(String newLastName) {
-  //   this.last_name = newLastName;
-  //   String sql = "UPDATE clients SET last_name = :last_name WHERE id = :id";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     con.createQuery(sql)
-  //       .addParameter("last_name", last_name)
-  //       .addParameter("id", this.id)
-  //       .executeUpdate();
-  //   }
-  // }
+  
+  public void updateLastName(String newLastName) {
+    this.last_name = newLastName;
+    String sql = "UPDATE clients SET last_name = :last_name WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("last_name", last_name)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+  }
 
 
 
