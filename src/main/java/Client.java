@@ -125,6 +125,20 @@ public class Client {
     }
   }
 
+  public void setNotes(String notes) {
+    this.notes = notes;
+    String sql = "UPDATE clients SET notes = :notes WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("notes", this.notes)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+  }
+
+  public String getNotes() {
+    return notes;
+  }
 
 
 

@@ -76,6 +76,14 @@ public void getStylist_findsTheStylistForASpecificClient() {
   assertEquals(testClient.getStylist(), "Nevin");
 }
 
+@Test
+public void setNotes_setAndGetNotes() {
+  Client testClient = new Client("Daren", "Schaad", 1);
+  testClient.save();
+  testClient.setNotes("Sensitive scalp");
+  assertTrue(Client.all().get(0).equals(testClient));
+  assertTrue(Client.all().get(0).getNotes().equals("Sensitive scalp"));
+}
 
 
 
