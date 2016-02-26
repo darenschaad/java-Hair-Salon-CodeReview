@@ -45,7 +45,17 @@ public class StylistTest {
     testStylist2.save();
     assertEquals(Stylist.find(testStylist.getId()).getName(), "Daren Schaad");
     assertTrue(Stylist.find(testStylist2.getId()).equals(testStylist2));
+  }
 
+  @Test
+  public void delete_deletesTheSpecifiedStylistBasedOnId() {
+    Stylist testStylist = new Stylist("Daren", "Schaad");
+    Stylist testStylist2 = new Stylist("Nevin", "Brown");
+    testStylist.save();
+    testStylist2.save();
+    testStylist.delete();
+    assertFalse(Stylist.all().contains(testStylist));
+    assertTrue(Stylist.all().contains(testStylist2));
   }
 
 
