@@ -29,7 +29,7 @@ public class StylistTest {
   }
 
   @Test
-  public void updateFirstName_updatesTheLastNameOfAStylist_true() {
+  public void updateLastName_updatesTheLastNameOfAStylist_true() {
     Stylist testStylist = new Stylist("Daren", "Schaad");
     testStylist.save();
     testStylist.updateLastName("Brown");

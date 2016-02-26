@@ -58,8 +58,29 @@ public class Client {
         .addParameter("stylist_id", stylist_id)
         .executeUpdate()
         .getKey();
-    }    
+    }
   }
+
+  public void updateFirstName(String newFirstName) {
+    this.first_name = newFirstName;
+    String sql = "UPDATE clients SET first_name = :first_name WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("first_name", first_name)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+  }
+  // public void updateLastName(String newLastName) {
+  //   this.last_name = newLastName;
+  //   String sql = "UPDATE clients SET last_name = :last_name WHERE id = :id";
+  //   try(Connection con = DB.sql2o.open()) {
+  //     con.createQuery(sql)
+  //       .addParameter("last_name", last_name)
+  //       .addParameter("id", this.id)
+  //       .executeUpdate();
+  //   }
+  // }
 
 
 
