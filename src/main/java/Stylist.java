@@ -37,6 +37,29 @@ public class Stylist {
     }
   }
 
+  public void save() {
+    String sql = "INSERT INTO stylists (first_name, last_name) VALUES (:first_name, :last_name)";
+    try (Connection con = DB.sql2o.open()) {
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("first_name", first_name)
+        .addParameter("last_name", last_name)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
+  @Override
+  public boolean equals(Object otherStylist){
+    if (!(otherStylist instanceof Stylist)) {
+      return false;
+    } else {
+      Stylist newStylist = (Stylist) otherStylist;
+      return this.getFirstName().equals(newStylist.getFirstName()) &&
+        this.getLastName().equals(newStylist.getLastName()) &&
+        this.getId() == newStylist.getId();
+    }
+  }
+
 
 
 

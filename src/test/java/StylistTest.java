@@ -11,4 +11,14 @@ public class StylistTest {
   public void all_emptyAtFirst() {
     assertEquals(Stylist.all().size(), 0);
   }
+
+  @Test
+  public void save_returnsTrueIfNamesAndIdsAreTheSame() {
+    Stylist testStylist = new Stylist("Daren", "Schaad");
+    testStylist.save();
+    assertTrue(Stylist.all().get(0).equals(testStylist));
+  }
+
+
+
 }
