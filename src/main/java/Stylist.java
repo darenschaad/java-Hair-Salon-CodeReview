@@ -80,7 +80,7 @@ public class Stylist {
         .executeUpdate();
     }
   }
-  
+
   public static Stylist find(int id) {
     String sql = "SELECT * FROM stylists WHERE id = :id";
     try(Connection con =DB.sql2o.open()) {
@@ -127,6 +127,15 @@ public class Stylist {
 
   public String getNotes() {
     return notes;
+  }
+
+  public List<Client> getClients() {
+    String sql = "SELECT * FROM clients WHERE stylist_id = :id";
+    try (Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetch(Client.class);
+    }
   }
 
 

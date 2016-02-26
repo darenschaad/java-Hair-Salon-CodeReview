@@ -69,6 +69,21 @@ public class StylistTest {
     assertEquals(testStylist.getNotes(), "Good stylist");
   }
 
+  @Test
+    public void getClients_getsClientsWithSpecificStylist() {
+      Stylist testStylist = new Stylist("Daren", "Schaad");
+      Stylist testStylist2 = new Stylist("Nevin", "Brown");
+      testStylist.save();
+      testStylist2.save();
+      Client testClient = new Client("Test", "Client", testStylist.getId());
+      Client testClient2 = new Client("Test2", "Client2", testStylist2.getId());
+      Client testClient3 = new Client("Test3", "Client3", testStylist.getId());
+      testClient.save();
+      testClient2.save();
+      testClient3.save();
+      assertEquals(testStylist.getClients().size(), 2);
+      assertTrue(testStylist.getClients().contains(testClient3));
+    }
 
 
 
