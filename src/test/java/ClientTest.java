@@ -67,6 +67,14 @@ public void delete_deletesTheSpecifiedClientBasedOnId() {
   assertTrue(Client.all().contains(testClient2));
 }
 
+@Test
+public void getStylist_findsTheStylistForASpecificClient() {
+  Stylist testStylist = new Stylist("Nevin", "Brown");
+  testStylist.save();
+  Client testClient = new Client("Daren", "Schaad", testStylist.getId());
+  testClient.save();
+  assertEquals(testClient.getStylist(), "Nevin");
+}
 
 
 

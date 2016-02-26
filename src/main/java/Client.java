@@ -116,6 +116,15 @@ public class Client {
     }
   }
 
+  public String getStylist() {
+    String sql = "SELECT first_name FROM stylists WHERE id = (SELECT stylist_id FROM clients WHERE id=:id)";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(String.class);
+    }
+  }
+
 
 
 
