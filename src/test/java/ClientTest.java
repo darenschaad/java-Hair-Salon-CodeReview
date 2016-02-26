@@ -28,14 +28,23 @@ public class ClientTest {
     assertEquals(savedClient.getFirstName(), "Karen");
   }
 
-  // @Test
-  // public void updateLastName_updatesTheLastNameOfAStylist_true() {
-  //   Stylist testStylist = new Stylist("Daren", "Schaad");
-  //   testStylist.save();
-  //   testStylist.updateLastName("Brown");
-  //   Stylist savedStylist = Stylist.all().get(0);
-  //   assertEquals(savedStylist.getLastName(), "Brown");
-  // }
+  @Test
+  public void updateLastName_updatesTheLastNameOfAClient_true() {
+    Client testClient = new Client("Daren", "Schaad", 1);
+    testClient.save();
+    testClient.updateLastName("Brown");
+    Client savedClient = Client.all().get(0);
+    assertEquals(savedClient.getLastName(), "Brown");
+  }
+
+  @Test
+  public void updateStylist_updatesTheStylistIdOfAClient_true() {
+    Client testClient = new Client("Daren", "Schaad", 1);
+    testClient.save();
+    testClient.updateStylist(2);
+    Client savedClient = Client.all().get(0);
+    assertEquals(savedClient.getStylistId(), 2);
+  }
 
 
 

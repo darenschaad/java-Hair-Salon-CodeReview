@@ -30,6 +30,10 @@ public class Client {
     return (first_name + " " + last_name);
   }
 
+  public int getStylistId() {
+    return stylist_id;
+  }
+
   @Override
   public boolean equals(Object otherClient){
     if (!(otherClient instanceof Client)) {
@@ -71,13 +75,24 @@ public class Client {
         .executeUpdate();
     }
   }
-  
+
   public void updateLastName(String newLastName) {
     this.last_name = newLastName;
     String sql = "UPDATE clients SET last_name = :last_name WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
         .addParameter("last_name", last_name)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+  }
+
+  public void updateStylist(int newStylistId) {
+    this.stylist_id = newStylistId;
+    String sql = "UPDATE clients SET stylist_id = :stylist_id WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("stylist_id", stylist_id)
         .addParameter("id", this.id)
         .executeUpdate();
     }
