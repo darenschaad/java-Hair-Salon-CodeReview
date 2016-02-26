@@ -46,6 +46,16 @@ public class ClientTest {
     assertEquals(savedClient.getStylistId(), 2);
   }
 
+  @Test
+  public void find_findsTheSpecificClientBasedOnId() {
+  Client testClient = new Client("Daren", "Schaad", 1);
+  Client testClient2 = new Client("Nevin", "Brown", 2);
+  testClient.save();
+  testClient2.save();
+  assertEquals(Client.find(testClient.getId()).getName(), "Daren Schaad");
+  assertTrue(Client.find(testClient2.getId()).equals(testClient2));
+}
+
 
 
 
