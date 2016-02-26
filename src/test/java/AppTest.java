@@ -41,7 +41,12 @@ public class AppTest extends FluentTest {
 
   @Test
   public void addANewStylist() {
-    
+    goTo("http://localhost:4567/");
+    click("a", withText("Add New Stylist"));
+    fill("#firstName").with("Daren");
+    fill("#lastName").with("Schaad");
+    submit("#addStylist");
+    assertThat(pageSource()).contains("Daren Schaad");
   }
 
 }
