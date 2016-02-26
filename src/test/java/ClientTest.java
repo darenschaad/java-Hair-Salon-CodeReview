@@ -12,6 +12,13 @@ public class ClientTest {
     assertEquals(Client.all().size(), 0);
   }
 
+  @Test
+  public void save_returnsTrueIfTypesAreTheSame() {
+    Client testClient = new Client("Daren", "Schaad", 1);
+    testClient.save();
+    assertTrue(Client.all().get(0).equals(testClient));
+  }
+
 
 
 
