@@ -49,4 +49,18 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Daren Schaad");
   }
 
+  @Test
+  public void addANewClient() {
+    Stylist testStylist = new Stylist("Daren", "Schaad");
+    testStylist.save();
+    goTo("http://localhost:4567/");
+    click("a", withText("Add New Client"));
+    fill("#firstName").with("Dustin");
+    fill("#lastName").with("Schaad");
+    Select select = new Select(webDriver.findElement(By.id("selectStylist")));
+    select.selectByValue("" + testStylist.getId());
+    submit("#addClient");
+    assertThat(pageSource()).contains("Dustin Schaad");
+  }
+
 }
