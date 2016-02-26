@@ -56,6 +56,17 @@ public class ClientTest {
   assertTrue(Client.find(testClient2.getId()).equals(testClient2));
 }
 
+@Test
+public void delete_deletesTheSpecifiedClientBasedOnId() {
+  Client testClient = new Client("Daren", "Schaad", 1);
+  Client testClient2 = new Client("Nevin", "Brown", 2);
+  testClient.save();
+  testClient2.save();
+  testClient.delete();
+  assertFalse(Client.all().contains(testClient));
+  assertTrue(Client.all().contains(testClient2));
+}
+
 
 
 
