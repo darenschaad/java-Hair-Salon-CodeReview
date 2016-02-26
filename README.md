@@ -12,8 +12,8 @@ A program that you can add your favorite restaurants to and filter your searches
 Clone this repository:
 ```
 $ cd ~/Desktop
-$ git clone https://github.com/LINK_TO_YOUR_REPO
-$ cd best-restaurants
+$ git clone https://github.com/darenschaad/java-Hair-Salon-CodeReview
+$ cd java-Hair-Salon-CodeReview
 ```
 
 Open terminal and run Postgres:
@@ -21,23 +21,24 @@ Open terminal and run Postgres:
 $ postgres
 ```
 
-Open a new tab in terminal and create the `best-restaurants` database:
+Open a new tab in terminal and create the `hair_salon` database:
 ```
 $ psql
-$ CREATE DATABASE best_restaurants;
-$ psql best_restaurants < best_restaurants_new.sql
+$ CREATE DATABASE hair_salon;
+$ psql hair_salon < hair_salon.sql
 ```
 
 Navigate back to the directory where this repository has been cloned and run gradle:
 ```
 $ gradle run
 ```
+Go to http://localhost:4567 
 
 ## Legal
 
-Copyright (c) 2016 by Abby Rolling & Daren Schaad
+Copyright (c) 2016 Daren Schaad
 
-This software is licensed under the MIT license.
+This software is licensed under the Epicodus license.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
