@@ -63,8 +63,10 @@ public class StylistTest {
     Stylist testStylist = new Stylist("Daren", "Schaad");
     testStylist.save();
     testStylist.setSpecialtyId(1);
+    testStylist.setNotes("Good stylist");
     assertTrue(Stylist.all().get(0).equals(testStylist));
     assertEquals(testStylist.getSpecialtyId(), 1);
+    assertEquals(testStylist.getNotes(), "Good stylist");
   }
 
 

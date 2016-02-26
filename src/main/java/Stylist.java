@@ -113,6 +113,21 @@ public class Stylist {
     return specialty_id;
   }
 
+  public void setNotes(String notes) {
+    this.notes = notes;
+    String sql = "UPDATE stylists SET notes = :notes WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("notes", notes)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+  }
+
+  public String getNotes() {
+    return notes;
+  }
+
 
 
 
