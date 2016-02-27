@@ -7,7 +7,7 @@
       <h3>Notes: $stylist.getNotes()</h3>
       <hr>
     #end
-    <a type="button" class="btn btn-danger" name="deletebutton" href="/confirm/$stylist.getId()">Delete $stylist.getFirstName()</a>
+    <a type="button" class="btn btn-danger" name="deletebutton" href="/confirm/stylist/$stylist.getId()">Delete $stylist.getFirstName()</a>
     <hr>
     <h2>Add or edit information about this stylist</h2>
     <form action="/stylist/$stylist.getId()" method="post">
