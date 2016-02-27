@@ -13,7 +13,7 @@
     #if($allClients.size() > 0)
       <h1>Clients:</h1>
       <ul>
-        #foreach ($stylist in $allClients)
+        #foreach ($client in $allClients)
           <h4><li><a href="/client/$client.getId()">$client.getFirstName() $client.getLastName()</a></li></h4>
         #end
       </ul>

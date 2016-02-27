@@ -125,6 +125,15 @@ public class Client {
     }
   }
 
+  public String getStylistLastName() {
+    String sql = "SELECT last_name FROM stylists WHERE id = (SELECT stylist_id FROM clients WHERE id=:id)";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(String.class);
+    }
+  }
+
   public void setNotes(String notes) {
     this.notes = notes;
     String sql = "UPDATE clients SET notes = :notes WHERE id = :id";

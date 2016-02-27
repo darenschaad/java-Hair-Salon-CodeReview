@@ -63,4 +63,17 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Dustin Schaad");
   }
 
+  @Test
+  public void getPageForSpecificClientAddNoteToo() {
+    Stylist testStylist = new Stylist("Daren", "Schaad");
+    testStylist.save();
+    Client testClient = new Client("Dustin", "Schaad", testStylist.getId());
+    testClient.save();
+    goTo("http://localhost:4567/");
+    click("a", withText("Dustin Schaad"));
+    fill("#notes").with("Picky");
+    submit("#clientInfo");
+    assertThat(pageSource()).contains("Picky");
+  }
+
 }

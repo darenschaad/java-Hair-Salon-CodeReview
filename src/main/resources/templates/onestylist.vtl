@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-sm-7">
+    <h1>$stylist.getFirstName()</h1>
+    <h1>$stylist.getLastName()</h1>
+    <hr>
+    #if ($stylist.getNotes())
+      <h3>Notes: $stylist.getNotes()</h3>
+      <hr>
+    #end
+    <a type="button" class="btn btn-danger" name="deletebutton" href="/confirm/$stylist.getId()">Delete $stylist.getFirstName()</a>
+    <hr>
+    <h2>Add or edit information about this stylist</h2>
+    <form action="/stylist/$stylist.getId()" method="post">
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input class="form-control" type="text" name="firstName" id="firstName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input class="form-control" type="text" name="lastName" id="lastName">
+      </div>
+      <div class="form-group">
+        <label for="notes">Notes:</label>
+        <input class="form-control" type="text" name="notes" id="notes">
+      </div>
+      <button type="submit" id="stylistInfo" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+  <div class="col-sm-5">
+    <h2>$stylist.getFirstName()'s Clients:</h2>
+    <ul>
+      #foreach ($client in $clients)
+        <h4><li><a href="/client/$client.getId()">$client.getFirstName() $client.getLastName()</a></li></h4>
+      #end
+    </ul>
+  </div>
+</div>

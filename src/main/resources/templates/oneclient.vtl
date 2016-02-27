@@ -1,0 +1,35 @@
+<h1>$client.getFirstName()</h1>
+<h1>$client.getLastName()</h1>
+<hr>
+<h3>Stylist: $client.getStylist() $client.getStylistLastName()</h3>
+#if ($client.getNotes())
+  <h3>Notes: $client.getNotes()</h3>
+#end
+<hr>
+<a type="button" class="btn btn-danger" name="deletebutton" href="/confirm/$client.getId()">Delete $client.getFirstName()</a>
+<br>
+<hr>
+<h2>Add or edit information about this client</h2>
+<form action="/client/$client.getId()" method="post">
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input class="form-control" type="text" name="firstName" id="firstName">
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <input class="form-control" type="text" name="lastName" id="lastName">
+  </div>
+  <label for="Stylist">Stylist:</label>
+  <select class="form-control" type="text" name="selectStylist" id="selectStylist">
+    <option value= 0></option>
+    #foreach ($stylist in $allStylists)
+      <option value="$stylist.getId()">$stylist.getFirstName() $stylist.getLastName()</option>
+    #end
+  </select>
+  <br>
+  <div class="form-group">
+    <label for="notes">Notes:</label>
+    <input class="form-control" type="text" name="notes" id="notes">
+  </div>
+  <button type="submit" id="clientInfo" class="btn btn-primary">Update</button>
+</form>
